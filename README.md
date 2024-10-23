@@ -1,1 +1,1 @@
-# saucedemo-webriverio-automation-test
+# saucedemo-webdriverio-automation-test

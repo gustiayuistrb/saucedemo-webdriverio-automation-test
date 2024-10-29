@@ -15,7 +15,7 @@ describe('Add to Cart Functionality', function() {
         const cartBadge = await $('.shopping_cart_badge');
         const badgeText = await cartBadge.getText();
         expect(badgeText).toBe('1'); 
-      });
+    });
 
     it('should verify if badge 1 is added to cart after clicking "Add to cart"', async() => {
         await cartPage.clickAddToCartButton();

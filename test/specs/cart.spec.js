@@ -10,7 +10,7 @@ describe('Add to Cart Functionality', function() {
     });
 
     it('Add item to cart on product detail page', async () => {
-        await inventoryPage.clickProduct('Sauce Labs Backpack'); 
+        await cartPage.clickProduct('Sauce Labs Backpack'); 
         await productDetailPage.clickAddToCart();
         const cartBadge = await $('.shopping_cart_badge');
         const badgeText = await cartBadge.getText();
@@ -18,13 +18,12 @@ describe('Add to Cart Functionality', function() {
     });
 
     it('should verify if badge 1 is added to cart after clicking "Add to cart"', async() => {
-        await cartPage.clickAddToCartButton();
+        await cartPage.clickAddToCart.click();
         await expect(cartPage.cartBadge).toHaveText('1');
     });
 
     it('should verify if the "Add to cart" button has changed to "Remove" after clicking it', async() => {
         await cartPage.clickAddToCartButton();
-        await cartPage.addToCartBackpackButton.waitForDisplayed({ reverse: true });
         const removeButtonText = await cartPage.removeBackpackButton;
         await expect(removeButtonText).toHaveText('Remove');
     });

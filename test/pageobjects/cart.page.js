@@ -30,7 +30,7 @@ class cartPage {
     }
 
     async clickShoppingCart() {
-        await shoppingCartLink.click();
+        await this.shoppingCartLink.click();
     }
 
     async cleanCartContent() {

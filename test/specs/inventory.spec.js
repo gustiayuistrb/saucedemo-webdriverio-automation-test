@@ -12,20 +12,16 @@ describe("Inventory Page", () => {
     it("Sort by Name (A -> Z)", async () => {
       await inventoryPage.selectSortOption(inventoryPage.AtoZOption);
       await browser.pause(500);
-
       const originalItemNames = await inventoryPage.getProductNames();
       const sortedItemNames = [...originalItemNames].sort();
-
       expect(originalItemNames).toEqual(sortedItemNames);
     });
 
     it("Sort by Name (Z -> A)", async () => {
       await inventoryPage.selectSortOption(inventoryPage.ZtoAOption);
       await browser.pause(500);
-
       const originalItemNames = await inventoryPage.getProductNames();
       const sortedItemNames = [...originalItemNames].sort((a, b) => b.localeCompare(a));
-
       expect(originalItemNames).toEqual(sortedItemNames);
     });
 

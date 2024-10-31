@@ -9,7 +9,7 @@ describe('Checkout functionality', function(){
         await loginPage.loginProcess('standard_user', 'secret_sauce');
     })
 
-    it.only('Proceed to checkout with valid data', async function (){
+    it('Proceed to checkout with valid data', async function (){
         await cartPage.clickAddToCart();
         await cartPage.clickShoppingCart();
         await checkoutPage.clickCheckout();
@@ -26,42 +26,34 @@ describe('Checkout functionality', function(){
         await checkoutPage.clickCheckout();
         await checkoutPage.fillCheckoutInfo('', '', '');
         await checkoutPage.clickContinue();
-        const errorMessage = await checkoutPage.getErrorMessage();
-        expect(errorMessage).toHaveText('Error: First Name is required');
+        await expect(checkoutPage.errorMessage).toHaveText('Error: First Name is required');
     });
 
     it('Not filling out the first name', async () => {
-        await cartPage.clickAddToCart(); 
         await cartPage.clickShoppingCart();
         await checkoutPage.clickCheckout();
         await checkoutPage.fillCheckoutInfo('', 'Ayu', '60113');
         await checkoutPage.clickContinue();
-        const errorMessage = await checkoutPage.getErrorMessage();
-        expect(errorMessage).toBe('Error: First Name is required');
+        await expect(checkoutPage.errorMessage).toHaveText('Error: First Name is required');
     });
 
     it('Not filling out the last name', async () => {
-        await cartPage.clickAddToCart(); 
         await cartPage.clickShoppingCart();
         await checkoutPage.clickCheckout();
         await checkoutPage.fillCheckoutInfo('Gusti', '', '60113');
         await checkoutPage.clickContinue();
-        const errorMessage = await checkoutPage.getErrorMessage();
-        expect(errorMessage).toBe('Error: Last Name is required');
+        await expect(checkoutPage.errorMessage).toHaveText('Error: Last Name is required');
     });
 
     it('Not filling out the postal code', async () => {
-        await cartPage.clickAddToCart(); 
         await cartPage.clickShoppingCart();
         await checkoutPage.clickCheckout();
         await checkoutPage.fillCheckoutInfo('Gusti', 'Ayu', '');
         await checkoutPage.clickContinue();
-        const errorMessage = await checkoutPage.getErrorMessage();
-        expect(errorMessage).toBe('Error: Postal Code is required');
+        await expect(checkoutPage.errorMessage).toHaveText('Error: Postal Code is required');
     });
 
     it('First name is invalid (numbers)', async () => {
-        await cartPage.clickAddToCart(); 
         await cartPage.clickShoppingCart();
         await checkoutPage.clickCheckout();
         await checkoutPage.fillCheckoutInfo('12345', 'Ayu', '60113');
@@ -71,7 +63,6 @@ describe('Checkout functionality', function(){
     });
 
     it('Last name is invalid (numbers)', async () => {
-        await cartPage.clickAddToCart(); 
         await cartPage.clickShoppingCart();
         await checkoutPage.clickCheckout();
         await checkoutPage.fillCheckoutInfo('Gusti', '12345', '60113');
@@ -81,7 +72,6 @@ describe('Checkout functionality', function(){
     });
 
     it('Postal code is invalid (letters)', async () => {
-        await cartPage.clickAddToCart(); 
         await cartPage.clickShoppingCart();
         await checkoutPage.clickCheckout();
         await checkoutPage.fillCheckoutInfo('Gusti', 'Ayu', 'kodepos');

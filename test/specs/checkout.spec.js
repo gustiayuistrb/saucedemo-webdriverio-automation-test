@@ -9,6 +9,15 @@ describe('Checkout functionality', function(){
         await loginPage.loginProcess('standard_user', 'secret_sauce');
     })
 
+    it('Click cancel menu', async function (){
+        await cartPage.clickAddToCart();
+        await cartPage.clickShoppingCart();
+        await checkoutPage.clickCheckout();
+        await checkoutPage.clickCancel();
+        await expect(browser).toHaveUrl('https://www.saucedemo.com/inventory.html')
+    })
+
+
     it('Proceed to checkout with valid data', async function (){
         await cartPage.clickAddToCart();
         await cartPage.clickShoppingCart();

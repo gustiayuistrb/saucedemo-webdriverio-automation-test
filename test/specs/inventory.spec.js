@@ -67,7 +67,7 @@ describe("Inventory Page", () => {
 
     it("Ensure that clicking 'Reset App State' resets the application state", async () => {
       await inventoryPage.clickResetAppState();
-      const cartBadge = await $('.shopping_cart_badge');
+      const cartBadge =  $('.shopping_cart_badge');
       const badgeText = await cartBadge.getText();
       expect(badgeText).toBe('');
     });

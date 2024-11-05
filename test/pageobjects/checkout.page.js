@@ -5,6 +5,7 @@ class checkoutPage {
     get postalCodeInput() { return $('#postal-code'); }
     get continueButton() { return $('#continue'); }
     get finishButton() { return $('#finish')}
+    get cancelButton() { return $('#cancel')}
     get completeHeader() { return $('.complete-header'); }
     get errorMessage() { return $('h3[data-test="error"]'); }
 
@@ -20,6 +21,10 @@ class checkoutPage {
 
     async clickContinue() {
         await this.continueButton.click();
+    }
+
+    async clickCancel() {
+        await this.cancelButton.click();
     }
 
     async clickFinish() {

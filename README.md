@@ -40,7 +40,7 @@ This will start the tests locally in your default browser (usually Chrome).
 Running a specific test file:
 To run a specific test file, use the following command:
 ```
-npx wdio run wdio.conf.js --spec ./tests/login.spec.js
+npx wdio run wdio.conf.js --spec ./test/specs/login.spec.js
 ```
 ### Writing Tests
 Test scripts are located in the /tests directory. 
